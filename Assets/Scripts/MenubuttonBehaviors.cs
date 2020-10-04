@@ -26,4 +26,9 @@ public class MenubuttonBehaviors : MonoBehaviour
     {
         SceneManager.LoadScene("Instructions");
     }
+
+    public void OnBackToMenuButtonPressed()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }
