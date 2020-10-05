@@ -43,4 +43,9 @@ public class ButtonBehaviors : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+
+    public void OnTempButtonPressed() // // For buttons pointing to the main menu.
+    {
+        SceneManager.LoadScene("Gameover");
+    }
 }
