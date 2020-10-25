@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public PlayerController player;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +21,7 @@ public class EnemyController : MonoBehaviour
     {
         if (other.gameObject.tag == "Bullet")
         {
-            player.score += 100;
+            Scoreboard.score += 100;
             Destroy(gameObject);
         } 
     }

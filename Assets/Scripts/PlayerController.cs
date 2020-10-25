@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     private float firingDelay = 0;
 
     public int lives = 3;
-    public int score = 0;
     public Text scoreText;
 
     public GameObject[] enemies;
@@ -26,6 +25,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Scoreboard.score = 0;
         touchesEnd = new Vector3();
         m_rigidBody = GetComponent<Rigidbody2D>();
     }
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         _CheckBounds();
         firingDelay += Time.deltaTime;
 
-        scoreText.text = "Score: " + score;
+        scoreText.text = "Score: " + Scoreboard.score;
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
