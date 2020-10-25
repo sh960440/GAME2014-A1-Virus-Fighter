@@ -9,10 +9,13 @@ public class EnemyBulletController : MonoBehaviour
     public PlayerController player;
     public EnemyBulletManager bulletManager;
 
+    Vector3 targetPos;
+
     // Start is called before the first frame update
     void Start()
     {
         bulletManager = FindObjectOfType<EnemyBulletManager>();
+        player = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -34,7 +37,7 @@ public class EnemyBulletController : MonoBehaviour
             player.lives--;
             bulletManager.ReturnBullet(gameObject);
         }
-        if (other.gameObject.tag == "Mask")
+        if (other.gameObject.tag == "Mask" || other.gameObject.tag == "Bullet")
         {
             bulletManager.ReturnBullet(gameObject);
         }
