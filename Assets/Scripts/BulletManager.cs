@@ -1,4 +1,25 @@
-﻿using System.Collections;
+﻿/*******************
+File name: BulletManager.cs
+Author: Shun min Hsieh
+Student Number: 101212629
+Date last Modified: 2020/10/23
+Program description: A class controls the creation and use of the bullet pool.
+Revision History:
+2020/10/23
+ - Added Start function
+ - Added _BuildBulletPool function
+ - Added GetBullet function
+ - Added ReturnBullet function
+
+Class:
+    BulletManager
+Functions:
+    Start
+    _BuildBulletPool
+    GetBullet
+    ReturnBullet
+*******************/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

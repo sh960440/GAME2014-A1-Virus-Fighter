@@ -1,4 +1,27 @@
-﻿using System.Collections;
+﻿/*******************
+File name: EnemyBulletManager.cs
+Author: Shun min Hsieh
+Student Number: 101212629
+Date last Modified: 2020/10/25
+Program description: A class controls the creation and use of the enemy's bullet pool.
+Revision History:
+2020/10/24
+ - Added Start function
+ - Added _BuildBulletPool function
+ - Added GetBullet function
+ - Added ReturnBullet function
+2020/10/25
+ - Modified GetBullet function
+
+Class:
+    EnemyBulletManager
+Functions:
+    Start
+    _BuildBulletPool
+    GetBullet
+    ReturnBullet
+*******************/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,8 +57,8 @@ public class EnemyBulletManager : MonoBehaviour
         newBullet.SetActive(true);
         newBullet.transform.position = position;
 
-
-        newBullet.GetComponent<EnemyBulletController>().SetNewDirection(position);
+        // Set a new direction for the bullet according to the shooting enemy's position
+        //newBullet.GetComponent<EnemyBulletController>().SetNewDirection(position);
         EnemyBulletController bulletCon;
         if (newBullet.GetComponent<EnemyBulletController>() != null)
         {
