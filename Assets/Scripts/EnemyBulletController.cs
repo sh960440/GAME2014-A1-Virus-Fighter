@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class EnemyBulletController : MonoBehaviour
 {
-    public float verticalSpeed;
+    public float movingSpeed;
     public float verticalBoundary;
     public PlayerController player;
     public EnemyBulletManager bulletManager;
 
-    Vector3 targetPos;
+    Vector3 targetPos = new Vector3();
+    Vector3 direction = new Vector3();
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +26,20 @@ public class EnemyBulletController : MonoBehaviour
         _CheckBounds();
     }
 
+    public void SetNewDirection(Vector3 enemyPos)
+    {
+        player = FindObjectOfType<PlayerController>();
+        Vector3 plauerPos = player.transform.position;
+        Vector3 distance = enemyPos - plauerPos ;
+        direction = distance.normalized;
+        //Debug.Log("Distance: " + distance);
+        //Debug.Log("Direction: " + direction);
+    }
+
     private void _Move()
     {
-        transform.position -= new Vector3(0.0f, verticalSpeed, 0.0f);
+        transform.position -= direction * movingSpeed;
+        //Debug.Log("Moving direction: " + direction);
     }
 
     public void OnTriggerEnter2D(Collider2D other)

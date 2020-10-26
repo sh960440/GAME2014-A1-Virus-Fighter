@@ -33,6 +33,15 @@ public class EnemyBulletManager : MonoBehaviour
         var newBullet = m_bulletPool.Dequeue();
         newBullet.SetActive(true);
         newBullet.transform.position = position;
+
+
+        newBullet.GetComponent<EnemyBulletController>().SetNewDirection(position);
+        EnemyBulletController bulletCon;
+        if (newBullet.GetComponent<EnemyBulletController>() != null)
+        {
+            bulletCon = newBullet.GetComponent<EnemyBulletController>();
+            bulletCon.SetNewDirection(position);
+        }
         return newBullet;
     }
 
