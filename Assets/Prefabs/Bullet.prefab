@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510cd6a8d8e016a4db31b07b1283bed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalSpeed: 0.01
+  verticalSpeed: 0.025
   verticalBoundary: 5.2
   bulletManager: {fileID: 0}
 --- !u!50 &7860786072014923336

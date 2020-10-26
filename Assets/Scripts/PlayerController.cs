@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public int lives = 3;
     public Text scoreText;
 
+    public AudioClip[] soundclips;
+
     public GameObject[] enemies;
 
     // Start is called before the first frame update
@@ -50,11 +52,19 @@ public class PlayerController : MonoBehaviour
 
     public void Fire()
     {
-        if (firingDelay >= 0.1f)
+        if (firingDelay >= 0.5f)
         {
             bulletManager.GetBullet(new Vector3(transform.position.x, transform.position.y + 0.6f, transform.position.z));
             firingDelay = 0;
+            GetComponent<AudioSource>().clip = soundclips[0];
+            GetComponent<AudioSource>().Play();
         }
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        GetComponent<AudioSource>().clip = soundclips[1];
+        GetComponent<AudioSource>().Play();
     }
 
     private void _Move()

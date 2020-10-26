@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class EnemyController : MonoBehaviour
     public bool IsAttackingEnemy = false;
     float shootingDelay = 0.0f;
     float timer = 2.0f;
+    public GameObject healingItem;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +41,12 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.tag == "Bullet")
         {
             Scoreboard.score += 100;
-            Destroy(gameObject);
+            GetComponent<AudioSource>().Play();
+            Destroy(gameObject, 0.25f);
+            if (Random.Range(0.0f, 100.0f) > 80.0f)
+            {
+                Instantiate(healingItem, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity); 
+            }    
         } 
     }
 }

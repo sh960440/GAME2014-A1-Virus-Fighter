@@ -1,6 +1,10 @@
-﻿using System.Collections;
+﻿/*
+
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyBulletController : MonoBehaviour
 {
@@ -8,15 +12,14 @@ public class EnemyBulletController : MonoBehaviour
     public float verticalBoundary;
     public PlayerController player;
     public EnemyBulletManager bulletManager;
+    //public SoundPlayer soundPlayer;
 
-    Vector3 targetPos = new Vector3();
     Vector3 direction = new Vector3();
 
     // Start is called before the first frame update
     void Start()
     {
         bulletManager = FindObjectOfType<EnemyBulletManager>();
-        player = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -47,10 +50,16 @@ public class EnemyBulletController : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             player.lives--;
+            if (player.lives <= 0)
+            {
+                SceneManager.LoadScene("Gameover");
+            }
             bulletManager.ReturnBullet(gameObject);
         }
         if (other.gameObject.tag == "Mask" || other.gameObject.tag == "Bullet")
         {
+            //soundPlayer = FindObjectOfType<SoundPlayer>();
+            //AudioSource.PlayClipAtPoint(soundClip, new Vector3(0, -4, 0));
             bulletManager.ReturnBullet(gameObject);
         }
     }

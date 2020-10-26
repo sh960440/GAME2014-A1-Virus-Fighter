@@ -18,6 +18,9 @@ public class MaskBehavior : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(gameObject);
+        AudioSource sound = GetComponent<AudioSource>();
+        sound.Play();
+
+        Destroy(gameObject, 0.25f);
     }
 }
